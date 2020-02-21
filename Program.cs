@@ -1,4 +1,4 @@
-﻿
+﻿using System.Diagnostics;
 using System;
 
 namespace fizzbuzz
@@ -8,18 +8,38 @@ namespace fizzbuzz
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Hello World!, welcome to FizzBuzz. Press 1 for Case, press 2 for If/Else");
+            Console.WriteLine("Welcome to FizzBuzz. Press 1 for Case, 2 for If/Else/Cont, 3 for If/Else, 4 for If Only, 5 for If/Cont");
             int selector = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("How high would you like to count?");
-            int count = Convert.ToInt32(Console.ReadLine());
-            if (selector == 1)
+            int count = 10000;
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            switch (selector)
             {
-                fizzyCase.Case(count);
+                case 1:
+                    fizzyCase.Case(count);
+                    break;
+                case 2:
+                    fizzyElseCont.ElseCont(count);
+                    break;
+                case 3:
+                    fizzyElse.Else(count);
+                    break;
+                case 4:
+                    fizzyIf.If(count);
+                    break;
+                case 5:
+                    fizzyIfCont.IfCont(count);
+                    break;
+                default:
+                    break;
             }
-            else
+            timer.Stop();
+            Console.WriteLine("Elapsed:{0}milliseconds", timer.Elapsed.TotalMilliseconds);
+            using (System.IO.StreamWriter
+            file = new System.IO.StreamWriter(@"./" + selector, true))
             {
-                fizzyElse.Else(count);
-            };
+                file.WriteLine(timer.Elapsed.TotalMilliseconds.ToString());
+            }
         }
     }
 

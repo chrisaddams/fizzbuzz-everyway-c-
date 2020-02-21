@@ -1,5 +1,3 @@
-
-using System.Diagnostics;
 using System;
 namespace fizzbuzz
 {
@@ -7,10 +5,6 @@ namespace fizzbuzz
     {
         public static void Case(int count)
         {
-            //bool Fizz = true;
-            Stopwatch timer = new Stopwatch();
-
-            timer.Start();
             for (int i = 0; i <= count; i++)
             {
                 switch (true)
@@ -29,9 +23,6 @@ namespace fizzbuzz
                         break;
                 }
             }
-            timer.Stop();
-            Console.WriteLine("Elapsed:{0}milliseconds", timer.Elapsed.TotalMilliseconds);
-
         }
     }
 }
